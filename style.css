@@ -24,7 +24,7 @@ h1 {
     height: auto;
     max-width: 540px;
     margin: 30px auto 20px;
-    padding: 40px 30px 40px;
+    padding: 30px 30px 60px;
     box-shadow: 0 8px 32px 0 rgba(69, 69, 69, 0.37);
     backdrop-filter: blur(1px) saturate(180%);
     -webkit-backdrop-filter: blur(1px) saturate(180%);
@@ -40,18 +40,27 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    font-size: 70px;
     color: #fff;
-    font-size: 50px;
-    font-weight: 700;
 }
-
-#seconds {
-    animation: pulse 1s infinite;
+.clock span{
+    position: relative;
 }
-@keyframes pulse {
-    0% { transform: scale(1);}
-    50% {transform: scale(1.1);}
-    100% {transform: scale(1);}
+.clock span::after{
+    position: absolute;
+    font-size: 16px;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#hours::after{
+    content: 'Hours';
+}
+#minutes::after{
+    content: 'Minutes';
+}
+#seconds::after{
+    content: 'Seconds';
 }
 
 .little-Intro {
@@ -79,27 +88,52 @@ h1 {
 @media (max-width: 768px) {
     .container {
         max-width: 97%;
-        padding: 30px 20px;
         margin: 60px auto 20px;
         padding: 30px 80px;
-        max-height: 100vh;
-    }}
+        padding-bottom: 55px;
+    }
+    h1 {
+        font-size: 40px;
+        margin-top: 40px;
+    }
+    .clock{
+        font-size: 80px;
+    }
+    .clock span::after{
+        position: absolute;
+        font-size: 16px;
+    }
+}
 
 /* For mobile devices */
 @media (max-width: 460px) {
     .container {
         max-width: 94%;
-        padding: 20px 12px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 12px;
+        padding-bottom: 30px;
         margin: 80px 10px 0 10px;
     }
     h1 {
         font-size: 24px;
         margin-top: 20px;
-    }}
+    }
+    .clock{
+        font-size: 40px;
+    }
+    .clock span::after{
+        position: absolute;
+        font-size: 12px;
+    }
+
+}
 
 /* For laptops and desktops */
 @media (min-width: 769px) and (max-width: 1200px) {
     .container {
         max-width: 70%;
         padding: 35px 25px;
-    }}
+    }
+
+}
