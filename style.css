@@ -11,7 +11,7 @@
 body {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(to bottom, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 50%, rgba(29, 29, 31, 1) 100%);
     padding: 10px;
 }
 h1 {
@@ -19,12 +19,13 @@ h1 {
     text-align: center;
 }
 .container {
+    border: 1px solid #ffffff36;
     width: 100%;
     height: auto;
     max-width: 540px;
     margin: 30px auto 20px;
     padding: 40px 30px 40px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 8px 32px 0 rgba(69, 69, 69, 0.37);
     backdrop-filter: blur(1px) saturate(180%);
     -webkit-backdrop-filter: blur(1px) saturate(180%);
     border-radius: 12px;
@@ -56,7 +57,7 @@ h1 {
 .little-Intro {
     color: #edeef0;
     text-align: center;
-    margin-top: 30px;
+    margin-top: 60px;
     cursor: pointer;
 }
 .little-Intro a {
@@ -70,7 +71,7 @@ h1 {
 .little-Intro a:hover {
     transform: scale(1.05);
     border-bottom: 3px solid #edeef0;
-    background: #FF7700;
+    background: #313131;
 }
 
 /* Responsive Styles */
