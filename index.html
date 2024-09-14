@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,32 +7,79 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./asset/icons8-clock-96.png">
 </head>
-
 <body>
-    <h1>Digital Clock</h1>
     <div class="container">
         <div class="clock">
-            <span id="hours">00</span>
-            <span>:</span>
-            <span id="minutes">00</span>
-            <span>:</span>
-            <span id="seconds">00</span>
+            <div>
+                <span id="hours">12</span>
+                <span id="Span2">Hours</span>
+                <span id="dots">:</span>
+            </div>
+            <div>
+                <span id="minutes">00</span>
+                <span id="Span2">Minutes</span>
+                <button id="toggleFormat">Switch to 24-Hour</button>
+            </div>
         </div>
     </div>
-    <p class="little-Intro">Design by <a href="https://m-tayyeb-personal-portfolio.vercel.app/"
-        target="_blank">Code-Artist</a></p>
 
     <script>
         var hours = document.getElementById('hours');
         var minutes = document.getElementById('minutes');
-        var seconds = document.getElementById('seconds');
-        setInterval(() => {
+        var is12HourFormat = true;
+
+        document.getElementById('toggleFormat').addEventListener('click', () => {
+            if (is12HourFormat) {
+                is12HourFormat = false;
+            } else {
+                is12HourFormat = true;
+            }
+            var buttonText;
+            if (is12HourFormat) {
+                buttonText = 'Switch to 24-Hour';
+            } else {
+                buttonText = 'Switch to 12-Hour';
+            }
+            document.getElementById('toggleFormat').innerText = buttonText;
+        });
+
+        //------------------------Dots-Blinking--------------------------------------
+        setInterval(toggleBlink, 1000);
+        function toggleBlink() {
+            var dotsBlink = document.getElementById("dots");
+            if (dotsBlink.style.visibility === 'hidden') {
+                dotsBlink.style.visibility = 'visible';
+            } else {
+                dotsBlink.style.visibility = 'hidden';
+            }
+        }
+        //--------------------------Clock---------------------------------------------
+        setInterval(function DigitalTime() {
             var currentTime = new Date();
-            hours.innerHTML = (currentTime.getHours()<10?'0':'') + currentTime.getHours();
-            minutes.innerHTML = (currentTime.getMinutes()<10?'0':'') + currentTime.getMinutes();
-            seconds.innerHTML = (currentTime.getSeconds()<10?'0':'') + currentTime.getSeconds();
+            //--------------------Hours-----------------------------------
+            function Hours() {
+                var currentHours = currentTime.getHours();
+                if (is12HourFormat) {
+                    currentHours = currentHours % 12 || 12;
+                }
+                if (currentHours < 10) {
+                    hours.innerHTML = '0' + currentHours;
+                } else {
+                    hours.innerHTML = currentHours;
+                }
+            }
+            Hours();
+            //----------------------Minutes-----------------------------
+            function Minutes() {
+                var currentMinutes = currentTime.getMinutes();
+                if (currentMinutes < 10) {
+                    minutes.innerHTML = '0' + currentMinutes;
+                } else {
+                    minutes.innerHTML = currentMinutes;
+                }
+            }
+            Minutes();
         }, 1000);
     </script>
 </body>
-
 </html>
